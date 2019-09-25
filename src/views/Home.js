@@ -8,6 +8,7 @@ import TextInput from '../components/TextInput';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
   card: {
@@ -26,12 +27,14 @@ const useStyles = makeStyles({
   },
 });
 
-function Home() {
+const Home = (props) => {
   const classes = useStyles();
 
   const sampleText = ['Outer Wilds', 'Control', 'The Surge 2'];
 
-  const listItems = sampleText.map((title, index) => {
+  const games = props.bestGames;
+
+  const listItems = games.map((title, index) => {
     return (
     <ListItem>
       <ListItemText primary={`${index + 1}) ${title}`}></ListItemText>
@@ -52,4 +55,10 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    bestGames: state.bestGames
+  };
+};
+
+export default connect(mapStateToProps)(Home);

@@ -3,6 +3,9 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { addGame } from '../redux/actions';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -21,15 +24,20 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-function TextInput() {
+const TextInput = ({dispatch}) => {
+    const title = '';
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: 'Sekiro: Shadows Die Twice'
       });
     
       const handleChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
+          dispatch(addGame(values.name))
       };
+
+      const handleTextChange = name => event => {
+        setValues({ ...values, [name]: event.target.value });
+      }
 
     return (
         <form className={classes.container} noValidate autoComplete="off">
@@ -38,12 +46,13 @@ function TextInput() {
             label="Name"
             className={classes.textField}
             value={values.name}
-            onChange={handleChange('name')}
+            onChange={handleTextChange('name')}
             margin="normal"
             variant="outlined"
         />
+        <Button onClick={handleChange('name')}>Add</Button>
         </form>
     );
 }
 
-export default TextInput;
+export default connect()(TextInput);
