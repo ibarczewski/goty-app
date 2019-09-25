@@ -7,7 +7,9 @@ const initialState = {
 function gotyApp(state = initialState, action) {
     switch (action.type) {
         case ADD_GAME:
-            return Object.assign({}, state, {
+            if ((state.bestGames).includes(action.title)) {
+                return state
+            } return Object.assign({}, state, {
                 bestGames: [...state.bestGames, action.title]
             })
         default:
