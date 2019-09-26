@@ -30,6 +30,7 @@ const TextInput = ({dispatch}) => {
     const [values, setValues] = React.useState({
         name: 'Sekiro: Shadows Die Twice'
       });
+    const error = !values.name;
     
       const handleChange = name => event => {
           dispatch(addGame(values.name))
@@ -42,6 +43,7 @@ const TextInput = ({dispatch}) => {
     return (
         <form className={classes.container} noValidate autoComplete="off">
         <TextField
+            error={error}
             id="outlined-name"
             label="Name"
             className={classes.textField}
@@ -50,7 +52,7 @@ const TextInput = ({dispatch}) => {
             margin="normal"
             variant="outlined"
         />
-        <Button onClick={handleChange('name')}>Add</Button>
+        <Button disabled={error} onClick={handleChange('name')}>Add</Button>
         </form>
     );
 }
