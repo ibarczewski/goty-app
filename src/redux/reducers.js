@@ -1,4 +1,4 @@
-import { ADD_GAME } from './actions'
+import { ADD_GAME, REORDER_LIST } from './actions'
 
 const initialState = {
   bestGames: ['Outer Wilds', 'Control', 'The Surge 2']
@@ -12,6 +12,9 @@ function gotyApp(state = initialState, action) {
             } return Object.assign({}, state, {
                 bestGames: [...state.bestGames, action.title]
             })
+        case REORDER_LIST:
+            console.log('hi', action)
+            return {bestGames: action.games }
         default:
             return state
     }

@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+.flex-content { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MuiCard-root {
+  width: 80%;
+  max-width: 80% !important;
+}
