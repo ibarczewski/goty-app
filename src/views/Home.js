@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import './Home.css';
 import { CardContent } from '@material-ui/core';
 import { Card } from '@material-ui/core';
@@ -45,7 +44,7 @@ const Home = ({dispatch, ...props}) => {
   )});
   
   const onDragEnd = result => {
-    const { destination, source, draggableId } = result;
+    const { destination, source } = result;
 
     if (!destination) {
       return;
@@ -57,8 +56,6 @@ const Home = ({dispatch, ...props}) => {
     }
 
     const newGames = [...games];
-    const tempGameA = newGames[destination.index];
-    const tempGameB = newGames[source.index];
 
     newGames.splice(destination.index, 0, newGames.splice(source.index, 1)[0]);
     dispatch(reorderList(newGames));

@@ -1,7 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
@@ -25,7 +23,6 @@ const useStyles = makeStyles(theme => ({
   }));
 
 const TextInput = ({dispatch}) => {
-    const title = '';
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: 'Sekiro: Shadows Die Twice'
