@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { connect } from "react-redux";
-import { reorderBestGamesList, reorderBestRemakesList } from "../redux/actions";
+import { reorderBestGamesList, reorderBestRemakesList, addBestGamesGame, addBestRemakesList } from "../redux/actions";
 import SurveyCard from '../components/SurveyCard';
 
 const Home = ({ dispatch, ...props }) => {
@@ -11,8 +11,8 @@ const Home = ({ dispatch, ...props }) => {
   return (
     <div className="App">
       <div className="flex-content">
-        <SurveyCard handleUpdate={reorderBestGamesList} games={bestGames}></SurveyCard>
-        <SurveyCard handleUpdate={reorderBestRemakesList} games={bestRemakes}></SurveyCard>
+        <SurveyCard handleUpdate={reorderBestGamesList} handleAdd={addBestGamesGame} games={bestGames}></SurveyCard>
+        <SurveyCard handleUpdate={reorderBestRemakesList} handleAdd={addBestRemakesList} games={bestRemakes}></SurveyCard>
       </div>
     </div>
   );

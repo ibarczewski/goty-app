@@ -8,7 +8,7 @@ import List from "@material-ui/core/List";
 import GamesList from "../components/GamesList";
 import { connect } from "react-redux";
 
-function SurveyCard({ games, dispatch, handleUpdate }) {
+function SurveyCard({ games, dispatch, handleUpdate, handleAdd }) {
   const onDragEnd = result => {
     const { destination, source } = result;
 
@@ -51,7 +51,7 @@ function SurveyCard({ games, dispatch, handleUpdate }) {
     <Card className={classes.card}>
       <CardContent className={classes.content}>
         <DragDropContext onDragEnd={onDragEnd}>
-          <TextInput></TextInput>
+          <TextInput handleAdd={handleAdd}></TextInput>
           <Droppable droppableId={1}>
             {provided => (
               <List innerRef={provided.innerRef} {...provided.droppableProps}>
