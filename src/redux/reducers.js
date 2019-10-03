@@ -1,10 +1,12 @@
-import { ADD_GAME, REORDER_LIST } from './actions'
+import { ADD_GAME, REORDER_BEST_GAMES_LIST, REORDER_BEST_REMAKES_LIST } from './actions'
 
 const initialState = {
-  bestGames: ['Outer Wilds', 'Control', 'The Surge 2']
+  bestGames: ['Outer Wilds', 'Control', 'The Surge 2'],
+  bestRemakes: ['Resident Evil 2', 'The Legend Of Zelda: Link\'s Awakening'],
 }
 
 function gotyApp(state = initialState, action) {
+    console.log(action, state);
     switch (action.type) {
         case ADD_GAME:
             if ((state.bestGames).includes(action.title)) {
@@ -12,10 +14,12 @@ function gotyApp(state = initialState, action) {
             } return Object.assign({}, state, {
                 bestGames: [...state.bestGames, action.title]
             })
-        case REORDER_LIST:
-            return {bestGames: action.games }
+        case REORDER_BEST_GAMES_LIST:
+            return { bestGames: action.games, ...state };
+        case REORDER_BEST_REMAKES_LIST:
+            return { bestRemakes: action.games, ...state };
         default:
-            return state
+            return state;
     }
 }
 
